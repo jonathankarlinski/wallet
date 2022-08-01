@@ -1,13 +1,15 @@
-import { USER_WALLET } from '../actions';
+import { userWallet } from '../actions';
 
 const INITIAL_STATE = {
-
+  currencies: [],
 };
 
 function wallet(state = INITIAL_STATE, action) {
   switch (action.type) {
-  case USER_WALLET:
-    return {};
+  case userWallet:
+    return {
+      currencies: action.payload,
+    };
   default:
     return state;
   }
