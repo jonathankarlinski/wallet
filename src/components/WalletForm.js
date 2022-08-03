@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCoins } from '../redux/actions';
+import { getCoins, actionsWalletDados } from '../redux/actions';
+
+const alimentacao = 'Alimentação';
 
 class WalletForm extends Component {
   constructor() {
     super();
     this.state = {
-      expenseAmount: '',
+      id: 0,
+      value: '',
       description: '',
+      currency: 'USD',
       method: 'Dinheiro',
-      category: 'Alimentação',
+      tag: alimentacao,
+      exchangeRates: [],
     };
   }
 
@@ -19,39 +24,63 @@ class WalletForm extends Component {
     userGetCoins();
   }
 
+  getApi = async () => {
+    const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const data = await response.json();
+    delete data.USDT;
+    return data;
+  };
+
+  handleSubmit = async () => {
+    const { userWallet } = this.props;
+    this.setState({ exchangeRates: await this.getApi() });
+    userWallet(this.state);
+    this.setState((prev) => ({
+      id: prev.id + 1,
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: alimentacao,
+    }));
+  }
+
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState(() => ({ [name]: value }));
   }
 
   render() {
-    const { expenseAmount, description, method, category } = this.state;
+    const { value, description, method, tag, currency } = this.state;
     const { userCoins } = this.props;
     return (
       <div>
         <h1>{userCoins}</h1>
-        <label htmlFor="expenseAmount">
+        <label htmlFor="value">
+          Valor:
           <input
             data-testid="value-input"
             type="number"
-            id="expenseAmount"
-            name="expenseAmount"
-            value={ expenseAmount }
+            id="value"
+            name="value"
+            value={ value }
             onChange={ this.handleChange }
           />
         </label>
-        <label htmlFor="coins">
-          test:
+        <label htmlFor="currency">
+          Moeda:
           <select
             type="select"
-            name="coins"
-            id="coins"
+            name="currency"
+            id="currency"
             data-testid="currency-input"
+            value={ currency }
+            onChange={ this.handleChange }
+
           >
             { userCoins.map((coin, index) => (
               <option
                 key={ index }
-                value={ coin }
               >
                 {coin}
               </option>
@@ -59,6 +88,7 @@ class WalletForm extends Component {
           </select>
         </label>
         <label htmlFor="method">
+          Tipo de Pagamento:
           <select
             type="select"
             name="method"
@@ -72,13 +102,13 @@ class WalletForm extends Component {
             <option>Cartão de débito</option>
           </select>
         </label>
-        <label htmlFor="category">
+        <label htmlFor="tag">
           <select
-            type="select"
-            name="category"
-            id="category"
+            type="tag"
+            name="tag"
+            id="tag"
             data-testid="tag-input"
-            value={ category }
+            value={ tag }
             onChange={ this.handleChange }
           >
             <option>Alimentação</option>
@@ -89,6 +119,7 @@ class WalletForm extends Component {
           </select>
         </label>
         <label htmlFor="description">
+          Descrição:
           <input
             data-testid="description-input"
             type="text"
@@ -97,6 +128,12 @@ class WalletForm extends Component {
             value={ description }
             onChange={ this.handleChange }
           />
+          <button
+            type="button"
+            onClick={ this.handleSubmit }
+          >
+            Adicionar despesa
+          </button>
         </label>
       </div>
     );
@@ -109,6 +146,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   userGetCoins: () => dispatch(getCoins()),
+  userWallet: (payload) => dispatch(actionsWalletDados(payload)),
 });
 
 WalletForm.propTypes = {
