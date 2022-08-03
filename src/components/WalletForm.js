@@ -55,9 +55,7 @@ class WalletForm extends Component {
     const { userCoins } = this.props;
     return (
       <div>
-        <h1>{userCoins}</h1>
-        <label htmlFor="value">
-          Valor:
+        <label htmlFor="expenseAmount">
           <input
             data-testid="value-input"
             type="number"
