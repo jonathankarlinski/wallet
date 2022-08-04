@@ -38,21 +38,18 @@ class Table extends Component {
                     {coin.method}
                   </td>
                   <td>
-                    {coin.value}
+                    {Number(coin.value).toFixed(2)}
                   </td>
                   <td>
-                    {coin.currency}
+                    {coin.exchangeRates[coin.currency].name}
                   </td>
                   <td>
-                    {
-                      coin.exchangeRates[coin.currency].ask
-                    }
-                    {/* descobrir qual é o cambio */}
+                    {Number(coin.exchangeRates[coin.currency].ask).toFixed(2)}
                   </td>
                   <td>
                     {
-                      coin.exchangeRates[coin.currency]
-                        .ask * Number(coin.value)
+                      (coin.exchangeRates[coin.currency]
+                        .ask * Number(coin.value)).toFixed(2)
                     }
                   </td>
                   <td>

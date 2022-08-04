@@ -46,4 +46,18 @@ describe('Teste tela de wallet', () => {
     expect(screen.getByTestId('description-input')).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
+  test('se é renderizado todas as informações de table', () => {
+    renderWithRouterAndRedux(<Wallet />);
+    expect(screen.getByText(/Tag/i)).toBeInTheDocument();
+    expect(screen.getByText(/Método de pagamento/i)).toBeInTheDocument();
+    expect(screen.getByText(/Câmbio utilizado/i)).toBeInTheDocument();
+    expect(screen.getByText(/Valor convertido/i)).toBeInTheDocument();
+    expect(screen.getByText(/Moeda de conversão/i)).toBeInTheDocument();
+    expect(screen.getByText(/Editar/i)).toBeInTheDocument();
+    expect(screen.getByText(/Excluir/i)).toBeInTheDocument();
+
+
+
+
+  });
 });
