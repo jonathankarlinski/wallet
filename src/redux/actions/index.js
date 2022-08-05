@@ -1,6 +1,7 @@
 export const userForm = 'userForm';
 export const userWallet = 'userWallet';
 export const userWalletDados = 'userWalletDados';
+export const deleteButton = 'deleteButton';
 
 export const actionsUser = (payload) => ({
   type: userForm,
@@ -24,3 +25,8 @@ export const getCoins = () => async (dispatch) => {
   const coins = Object.keys(data);
   dispatch(actionsWallet(coins));
 };
+
+export const buttonDelete = (payload) => ({
+  type: deleteButton,
+  payload,
+});

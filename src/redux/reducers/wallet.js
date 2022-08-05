@@ -1,4 +1,4 @@
-import { userWallet, userWalletDados } from '../actions';
+import { userWallet, userWalletDados, deleteButton } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -19,6 +19,13 @@ function wallet(state = INITIAL_STATE, action) {
         ...state.expenses,
         action.payload,
       ],
+    };
+  case deleteButton:
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense) => (
+        Number(expense.id) !== Number(action.payload)
+      )),
     };
   default:
     return state;

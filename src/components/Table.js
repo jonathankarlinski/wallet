@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { buttonDelete } from '../redux/actions';
 
 class Table extends Component {
+  handleDelete = (event) => {
+    const { id } = event.target;
+    const { userbuttonDelete } = this.props;
+    userbuttonDelete(id);
+  }
+
   render() {
     const { userCoin } = this.props;
     console.log(userCoin);
@@ -56,8 +63,15 @@ class Table extends Component {
                     Real
                   </td>
                   <td>
-                    <button type="button">+</button>
-                    <button type="button">-</button>
+                    <button type="button">Editar</button>
+                    <button
+                      id={ coin.id }
+                      type="button"
+                      data-testid="delete-btn"
+                      onClick={ this.handleDelete }
+                    >
+                      Excluir
+                    </button>
                   </td>
                 </tr>
               ))
@@ -72,8 +86,12 @@ const mapStateToProps = (state) => ({
   userCoin: state.wallet.expenses,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  userbuttonDelete: (payload) => dispatch(buttonDelete(payload)),
+});
+
 Table.propTypes = {
   userCoin: PropTypes.arrayOf(Object),
 }.isRequired;
 
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(Table);

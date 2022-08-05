@@ -102,6 +102,7 @@ class WalletForm extends Component {
           </select>
         </label>
         <label htmlFor="tag">
+          Categoria:
           <select
             type="tag"
             name="tag"
