@@ -2,6 +2,7 @@ export const userForm = 'userForm';
 export const userWallet = 'userWallet';
 export const userWalletDados = 'userWalletDados';
 export const deleteButton = 'deleteButton';
+export const editButton = 'editButton';
 
 export const actionsUser = (payload) => ({
   type: userForm,
@@ -28,5 +29,10 @@ export const getCoins = () => async (dispatch) => {
 
 export const buttonDelete = (payload) => ({
   type: deleteButton,
+  payload,
+});
+
+export const buttonEdit = (payload) => ({
+  type: editButton,
   payload,
 });

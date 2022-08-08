@@ -11,21 +11,22 @@ describe('Teste tela de login', () => {
     renderWithRouterAndRedux(<Login />);
     expect(screen.getByTestId('email-input')).toBeInTheDocument();
     expect(screen.getByTestId('password-input')).toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('button', /Entrar/i)).toBeInTheDocument();
   });
   test('se ao clicar no botão é renderizado a pagina wallet', () => {
-    renderWithRouterAndRedux(<Login />);
+     const { history } = renderWithRouterAndRedux(<App />);
 
     const email = screen.getByTestId('email-input');
     const senha = screen.getByTestId('password-input');
+    const button = screen.getByRole('button', /Entrar/i)
+
+    expect(button).toHaveAttribute("disabled");
     userEvent.type(email, 'teste@gmail.com');
-    userEvent.type(senha, 777777777777777);
+    userEvent.type(senha, '777777777777777');
+    expect(button).not.toHaveAttribute("disabled");
 
-
-    userEvent.click(screen.getByRole('button'));
-
-    renderWithRouterAndRedux(<Wallet />);
-    expect(screen.getByTestId('email-field')).toBeInTheDocument();
+    userEvent.click(button);
+    expect(history.location.pathname).toBe('/carteira');
   });
   
 });
@@ -44,7 +45,7 @@ describe('Teste tela de wallet', () => {
     expect(screen.getByTestId('method-input')).toBeInTheDocument();
     expect(screen.getByTestId('tag-input')).toBeInTheDocument();
     expect(screen.getByTestId('description-input')).toBeInTheDocument();
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('button', /Adicionar despesa/i)).toBeInTheDocument();
   });
   test('se é renderizado todas as informações de table', () => {
     renderWithRouterAndRedux(<Wallet />);
@@ -55,9 +56,19 @@ describe('Teste tela de wallet', () => {
     expect(screen.getByText(/Moeda de conversão/i)).toBeInTheDocument();
     expect(screen.getByText(/Editar/i)).toBeInTheDocument();
     expect(screen.getByText(/Excluir/i)).toBeInTheDocument();
+  });
+  test('se é renderizado todas as informações de table', () => {
+    renderWithRouterAndRedux(<Wallet />);
+    const description = screen.getByTestId('description-input');
+    const value = screen.getByTestId('value-input');
 
+    userEvent.type(description, 'pc gamer');
+    userEvent.type(value, '1000');
 
-
+    const button = screen.getByRole('button', /Adicionar despesa/i);
+    userEvent.click(button);
+    // expect(screen.getByText(/pc gamer/i)).toBeInTheDocument();
+    // expect(screen.getByText(/1000/i)).toBeInTheDocument();
 
   });
 });
