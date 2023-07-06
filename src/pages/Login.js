@@ -15,13 +15,13 @@ class Login extends React.Component {
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState(() => ({ [name]: value }));
-  }
+  };
 
   handleSubmit = () => {
     const { userDispatch, history } = this.props;
     userDispatch({ ...this.state });
     history.push('/carteira');
-  }
+  };
 
   render() {
     const { email, password } = this.state;
