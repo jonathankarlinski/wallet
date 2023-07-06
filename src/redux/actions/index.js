@@ -33,7 +33,6 @@ const saveWallets = (obj, data) => ({
 
 export function saveCoins(data) {
   return async (dispatch) => {
-    dispatch(getCoins());
     const response = await fetch('https://economia.awesomeapi.com.br/json/all');
     const json = await response.json();
     delete data.USDT;
