@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCoins } from '../redux/actions';
+import '../styles/components/WalletForm.css';
 
 class WalletForm extends Component {
   componentDidMount() {
@@ -24,91 +25,89 @@ class WalletForm extends Component {
       editButton,
     } = this.props;
     return (
-      <div>
-        <form>
-          <label htmlFor="value">
-            Valor:
-            <input
-              data-testid="value-input"
-              type="number"
-              id="value"
-              name="value"
-              value={ value }
-              onChange={ getInfos }
-            />
-          </label>
-          <label htmlFor="currency">
-            Moeda:
-            <select
-              type="select"
-              name="currency"
-              id="currency"
-              data-testid="currency-input"
-              value={ currency }
-              onChange={ getInfos }
-            >
-              { currencies.map((cur) => <option key={ cur } value={ cur }>{cur}</option>)}
-            </select>
-          </label>
-          <label htmlFor="method">
-            Tipo de Pagamento:
-            <select
-              type="select"
-              name="method"
-              id="method"
-              data-testid="method-input"
-              value={ method }
-              onChange={ getInfos }
-            >
-              <option>Dinheiro</option>
-              <option>Cartão de crédito</option>
-              <option>Cartão de débito</option>
-            </select>
-          </label>
-          <label htmlFor="tag">
-            Categoria:
-            <select
-              type="tag"
-              name="tag"
-              id="tag"
-              data-testid="tag-input"
-              value={ tag }
-              onChange={ getInfos }
-            >
-              <option>Alimentação</option>
-              <option>Lazer</option>
-              <option>Trabalho</option>
-              <option>Transporte</option>
-              <option>Saúde</option>
-            </select>
-          </label>
-          <label htmlFor="description">
-            Descrição:
-            <input
-              data-testid="description-input"
-              type="text"
-              id="description"
-              name="description"
-              value={ description }
-              onChange={ getInfos }
-            />
-          </label>
-          <button
-            type="button"
-            data-testid="save-expense-button"
-            disabled={ (!value || !description) }
-            onClick={ () => {
-              if (editor) {
-                editButton();
-              } else {
-                saveButton(expenses);
-              }
-            } }
+      <form className="walletForm-container-form">
+        <label htmlFor="value">
+          Valor:
+          <input
+            data-testid="value-input"
+            type="number"
+            id="value"
+            name="value"
+            value={ value }
+            onChange={ getInfos }
+          />
+        </label>
+        <label htmlFor="currency">
+          Moeda:
+          <select
+            type="select"
+            name="currency"
+            id="currency"
+            data-testid="currency-input"
+            value={ currency }
+            onChange={ getInfos }
           >
-            { editor ? 'Editar despesa' : 'Adicionar despesa' }
-          </button>
-        </form>
-      </div>
+            {currencies.map((cur) => <option key={ cur } value={ cur }>{cur}</option>)}
+          </select>
+        </label>
+        <label htmlFor="method">
+          Tipo de Pagamento:
+          <select
+            type="select"
+            name="method"
+            id="method"
+            data-testid="method-input"
+            value={ method }
+            onChange={ getInfos }
+          >
+            <option>Dinheiro</option>
+            <option>Cartão de crédito</option>
+            <option>Cartão de débito</option>
+          </select>
+        </label>
+        <label htmlFor="tag">
+          Categoria:
+          <select
+            type="tag"
+            name="tag"
+            id="tag"
+            data-testid="tag-input"
+            value={ tag }
+            onChange={ getInfos }
+          >
+            <option>Alimentação</option>
+            <option>Lazer</option>
+            <option>Trabalho</option>
+            <option>Transporte</option>
+            <option>Saúde</option>
+          </select>
+        </label>
+        <label htmlFor="description">
+          Descrição:
+          <input
+            data-testid="description-input"
+            type="text"
+            id="description"
+            name="description"
+            value={ description }
+            onChange={ getInfos }
+          />
+        </label>
+        <button
+          type="button"
+          data-testid="save-expense-button"
+          disabled={ (!value || !description) }
+          onClick={ () => {
+            if (editor) {
+              editButton();
+            } else {
+              saveButton(expenses);
+            }
+          } }
+        >
+          {editor ? 'Editar despesa' : 'Adicionar despesa'}
+        </button>
+      </form>
     );
   }
 }

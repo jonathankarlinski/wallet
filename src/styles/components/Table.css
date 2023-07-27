@@ -1,0 +1,52 @@
+.table-container {
+  overflow-x: auto;
+  padding-top: 0.5rem;
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+tbody th , td {
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  padding: 0.938rem;
+  text-align: left;
+}
+
+thead th {
+  background-color: #283618;
+  color: hwb(0 100% 0%);
+  padding: 0.625rem;
+  text-align: center;
+}
+
+thead td {
+  border: 1px solid #ccc;
+  padding: 0.625rem;
+}
+
+
+tbody tr:nth-child( even ) {
+  background-color: #606c38;
+  color: hwb(0 100% 0%);
+}
+
+tbody button {
+  border: none;
+  border-radius: 0.25rem;
+  color: hwb(0 100% 0%);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  padding: 0.563rem;
+}
+
+[ data-testid = 'edit-btn' ] {
+  background-color: #2ecc71;
+}
+
+[ data-testid = 'delete-btn' ] {
+  background-color: #e74c3c;
+}

@@ -1,0 +1,30 @@
+.header-container-form {
+  background-color: #bc6c25;
+  color: hwb(0 100% 0%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.625rem;
+}
+
+.header-container-form-field {
+  align-items: center;
+  display: flex;
+}
+
+.header-container-form p {
+  font-weight: 700;
+}
+
+[ data-testid = 'email-field' ] {
+  font-size: 1.125rem;
+}
+
+[ data-testid = 'total-field' ] {
+  color: #283618;
+  font-size: 1.25rem;
+  margin: 0 0.2rem 0 0.5rem;
+}
+
+[ data-testid = 'header-currency-field ' ] {
+  font-size: 1rem;
+}
