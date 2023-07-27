@@ -19,7 +19,7 @@
 
 
 .walletForm-container-form input {
-  background-color: hwb(0 100% 0%);
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
   color: #333;
@@ -40,7 +40,7 @@
 
 
 .walletForm-container-form select {
-  background-color: hwb(0 100% 0%);
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
   color: #333;
@@ -59,7 +59,7 @@
   background-color: #dda15e;
   border: none;
   border-radius: 0.25rem;
-  color: hwb(0 100% 0%);
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-size: 0.875rem;
