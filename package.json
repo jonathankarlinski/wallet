@@ -1,6 +1,6 @@
 {
-  "homepage": "https://github.com/jonathankarlinski/wallet/",
-  "name": "sd-0x-project-trybewallet",
+  "name": "wallet",
+  "homepage": "https://jonathankarlinski.github.io/wallet/",
   "version": "0.1.0",
   "private": true,
   "engines": {
