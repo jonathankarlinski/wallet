@@ -11,6 +11,7 @@ Neste projeto, você terá a capacidade de gerenciar sua carteira de controle de
 - Java Script
 - React.js
 - Redux
+- Testes Unitários
 
 ## Demonstração
 
