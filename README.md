@@ -1,10 +1,6 @@
 # Projeto Wallet
 
-Neste projeto você vai poder gerir sua carteira de controle de gastos com conversor de moedas, ao utilizar essa aplicação um usuário deverá ser capaz de:
-
-- Adicionar, remover e editar um gasto;
-- Visualizar uma tabelas com seus gastos;
-- Visualizar o total de gastos convertidos para - uma moeda de escolha;
+Neste projeto, você terá a capacidade de gerenciar sua carteira de controle de gastos, que inclui um prático conversor de moedas. Ao utilizar esta aplicação, os usuários podem facilmente adicionar, remover e editar seus gastos, garantindo um controle financeiro eficaz. Além disso, a aplicação apresenta uma tabela clara e organizada, que exibe todos os gastos registrados, permitindo uma visão abrangente das finanças pessoais. Uma funcionalidade adicional é a capacidade de converter o total de gastos para a moeda de escolha do usuário, tornando o acompanhamento financeiro ainda mais conveniente e personalizado.
 
 [Testar Projeto](https://jonathankarlinski.github.io/wallet/)
 
