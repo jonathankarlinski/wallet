@@ -5,12 +5,10 @@ const INITIAL_STATE = {
 };
 
 function user(state = INITIAL_STATE, action) {
-  switch (action.type) {
-  case userForm:
+  if (action.type === userForm) {
     return action.payload;
-  default:
-    return state;
   }
+  return state;
 }
 
 export default user;
