@@ -1,4 +1,5 @@
 src/tests
 src/serviceWorker.js
+src/utils
 cypress
 coverage
