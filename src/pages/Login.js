@@ -27,7 +27,7 @@ class Login extends React.Component {
   render() {
     const { email, password } = this.state;
     const passwordMin = 6;
-    const regexEmail = /\S+@\S+\.\S+/;
+    const regexEmail = /^(?:\S+)@(?:\S+)\.(?:\S+)$/;
     return (
       <div className="login-container">
         <div className="login-container-title">Wallet</div>
