@@ -1,3 +1,3 @@
-const secret = /\S+@\S+\.\S+/;
+export const secretEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-export default secret;
+export const secretPasswordMin = 6;

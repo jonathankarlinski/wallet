@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { actionsUser } from '../redux/actions';
 import '../styles/page/Login.css';
-import secret from '../utils /secret';
+import { secretEmail, secretPasswordMin } from '../utils /secret';
 
 class Login extends React.Component {
   constructor() {
@@ -27,7 +27,6 @@ class Login extends React.Component {
 
   render() {
     const { email, password } = this.state;
-    const passwordMin = 6;
     return (
       <div className="login-container">
         <div className="login-container-title">Wallet</div>
@@ -59,7 +58,7 @@ class Login extends React.Component {
           <button
             type="button"
             onClick={ this.handleSubmit }
-            disabled={ !secret.test(email) || password.length < passwordMin }
+            disabled={ !secretEmail.test(email) || password.length < secretPasswordMin }
           >
             Entrar
           </button>
